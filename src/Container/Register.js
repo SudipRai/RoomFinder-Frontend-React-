@@ -23,13 +23,17 @@ class Register extends Component{
     render(){
         return(
             <div>
-                <p><input type="text" value={this.state.fullname} onChange={(event)=>{this.setState({fullname:event.target.value})}}/></p>
-                <p><input type="text" value={this.state.phone} onChange={(event)=>{this.setState({phone:event.target.value})}} /></p>
-                <p><input type="email" value={this.state.email} onChange={(event)=>{this.setState({email:event.target.value})}} /></p>
-                <p><input type="text" value={this.state.password} onChange={(event)=>{this.setState({password:event.target.value})}} /></p>
-                <p><button onClick={this.register}>Register</button></p>
+            <p><input type="text" value={this.state.fullname} onChange={(event)=>{this.setState({fullname:event.target.value})}}/></p>
+            <p><input type="text" value={this.state.phone} onChange={(event)=>{this.setState({phone:event.target.value})}} /></p>
+            <p><input type="email" value={this.state.email} onChange={(event)=>{this.setState({email:event.target.value})}} /></p>
+            <p><input type="text" value={this.state.password} onChange={(event)=>{this.setState({password:event.target.value})}} /></p>
+            <p><button onClick={this.register}>Register</button></p>
             </div>
-        )
+           
+                  )
     }
 }
 export default Register
+
+
+  

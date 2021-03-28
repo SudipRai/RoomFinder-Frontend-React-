@@ -1,0 +1,143 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+.container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+    width: 100%;
+	background: #fff
+
+
+}
+
+.container .form-container{
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 80%;
+	background: #fff;
+}
+
+.container .form-image{
+	position: absolute;
+	right: 0;
+	color: #fff;
+	height: 100%;
+	width: 60%;
+	background: linear-gradient(rgb(235,0,255),rgb(17,166,223));
+	clip-path: polygon(0 0, 100% 0, 100% 100%,70% 100%);
+}
+.container .form-image .text p{
+font-size: 12px;
+}
+.container .form-image .text h2{
+font-size: 34px;
+margin-bottom: 20px;
+}
+.container .form-image .text{
+position: absolute;
+right: 0;
+padding: 30px;
+text-align: right;
+width: 60%;
+
+}
+
+img{
+	width: 50px;
+	border-radius: 12%;
+    margin-right: 20px;
+}
+.form-group{
+	margin: 30px 60px;
+}
+
+.form-group .input-group{
+	width: 300px;
+	margin:15px 0px;
+}
+.form-body .header{
+	margin: 0px 60px;
+
+}
+.form-body .header h2{
+	margin-bottom: 15px;
+
+}
+.form-body .header p{
+	font-size: 12px;
+
+}
+
+.form-body .header a{
+	text-decoration: none;
+	color: rgb(235,0,255);
+
+}
+
+.form-group .input-group input[type='text'],
+.form-group .input-group input[type='email']{
+	width: 100%;
+	padding: 8px 15px;
+	outline: none;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+.form-group .input-group.flex{
+	display: flex;
+	font-size: 12px;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
+}
+.form-group .input-group .remember{
+display: flex;
+align-items: center;
+}
+.form-group .input-group .remember input{
+	margin-right: 5px;
+}
+
+.form-group .input-group.flex a{
+text-decoration: none;
+color: rgb(235,0,255);
+}
+
+.form-group .input-group button{
+	background: rgb(235,0,255);
+	width: 150px;
+	padding: 10px 15px;
+	border: none;
+	color: #fff;
+	border-radius: 5px;
+
+}
+.form-group .input-group.right{
+text-align: right;
+}
+
+@media screen and (max-width: 1000px) {
+	.container .form-image{
+	opacity: 0;
+}
+.container .form-container{
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 90%;
+	height: auto;
+	background: #fff;
+	margin: 20px;
+	padding: 30px;
+}
+}
+ 
+.logo{
+    width: 50px;
+}
