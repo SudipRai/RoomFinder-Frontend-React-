@@ -136,8 +136,72 @@ text-align: right;
 	margin: 20px;
 	padding: 30px;
 }
+.container-box{
+    margin: 0;
+}
 }
  
 .logo{
     width: 50px;
 }
+
+.container-fluid{
+    display:flex;
+    margin-top: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    background: white;
+   width: 80% !important;
+   
+  }
+  .left-side{
+    float: left;
+    width: 60%;
+    height: 50vh;
+    
+  
+  }
+  .right-side{
+    float: right;
+    width: 40%;
+    height: 50vh;
+    position: relative;
+    border-radius: 0 15px 15px 0;
+  }
+  .left-side img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px 0 0 15px;
+  }
+  
+ 
+  .details{
+  
+    /* Center vertically and horizontally */
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    margin: -25px 0 0 -25px;
+  }
+  .title{
+    font-family: Impact;
+  }
+  .location{
+    font-size: 20px;
+    font-family: Georgia;
+    color: green;
+  }
+  .price{
+    font-size: 26px;
+    font-family: Georgia;
+  }
+  .btnmore button{
+      background: #203647;
+    width: 150px;
+    padding: 10px 15px;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+  }
+

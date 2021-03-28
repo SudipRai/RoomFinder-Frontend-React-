@@ -52,7 +52,7 @@ class Login extends Component{
                                         <div class="forgot"><a href="#">Forgot Password</a></div>
                                     </div>
                                     <div class="input-group right">
-                                    <button onClick={this.login}>Register</button>
+                                    <button onClick={this.login}>Login</button>
                                     </div>
                                 </div>
                             </div>
