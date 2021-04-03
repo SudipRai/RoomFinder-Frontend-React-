@@ -16,6 +16,7 @@ class Header extends Component{
       <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="/register">Register</a>
       <a class="nav-item nav-link" href="/login">Login</a>
+      <a class="nav-item nav-link" href="/addroom">Add Room</a>
       <a class="nav-item nav-link disabled" href="#">Disabled</a>
     </div>
   </div>
