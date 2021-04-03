@@ -4,6 +4,7 @@ import Register from './Register';
 import Login from './Login'
 import {Route} from 'react-router-dom'
 import axios from 'axios';
+import '../custom.css';
 
 class viewroom extends Component{
     state = {

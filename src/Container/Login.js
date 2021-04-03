@@ -1,11 +1,15 @@
 import { Component } from "react"
 import axios from 'axios';
-
+import '../custom.css';
+import {Route, Link} from 'react-router-dom';
+import { useAlert } from 'react-alert'
 
 class Login extends Component{
+   
     state={
         email:"",
         password:""
+       
     }
     changeHandler =(e)=>{
         this.setState({
@@ -14,17 +18,27 @@ class Login extends Component{
            
         )
     }
+  
     login=(e)=>{
+        
         e.preventDefault();
         axios.post("http://localhost:90/login", this.state)
         .then((response)=>{
             console.log(response);
+            
             localStorage.setItem('token',response.data.token)
+            localStorage.setItem('userID',response.data.user)
+            
+            window.location.href = '/home'
             this.setState({
                 chkLogin:true
             })
+            
+           
+        
         })        
         .catch((err)=>{
+            alert("Invalid Credential")
             console.log(err.response)
         })
     }
@@ -53,7 +67,9 @@ class Login extends Component{
                                     </div>
                                     <div class="input-group right">
                                     <button onClick={this.login}>Login</button>
+                            
                                     </div>
+                                    
                                 </div>
                             </div>
                             <div class="form-image">

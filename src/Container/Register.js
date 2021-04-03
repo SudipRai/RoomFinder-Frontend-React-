@@ -1,5 +1,6 @@
 import { Component } from "react"
 import axios from 'axios';
+import '../custom.css';
 
 class Register extends Component{
     state={
