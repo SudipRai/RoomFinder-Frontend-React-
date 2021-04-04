@@ -4,19 +4,19 @@ import Register from './Register';
 import Login from './Login'
 import {Route} from 'react-router-dom'
 import axios from 'axios';
-import '../custom.css';
+
 import Carousel from 'react-bootstrap/Carousel'
 
 class Profile extends Component{
     state = {
         profile : [],
-        userID:"{localStorage.getItem('userID')}",
+        id:localStorage.getItem('userID'),
         config : {
             headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
         }
 }
 componentDidMount(){
-    axios.get("http://localhost:90/user/"+this.state.userID, this.state.config)
+    axios.get("http://localhost:90/user/"+ this.state.id, this.state.config)
     .then((response)=>{
         console.log(response)
         this.setState({
@@ -29,17 +29,16 @@ componentDidMount(){
 }
 render(){
     return(
-        this.state.profile.map((pro)=>{
-                       
-            return (
-<div class="container pro">
-	<div class="row">
+        
+      <div>
+<div class="container-md pro">
+	<div className="row">
 		<div class="col-md-4 prohalf">
 			<div class="proimg">
 				<img src="images.png"/>
 			</div>
 			<div class="proname">
-				<p>{pro.fullname}</p>
+				<p>{this.state.profile.fullname}</p>
 			</div>
 			
 		</div>
@@ -47,11 +46,13 @@ render(){
 			<div class="myinfo">
 				<h3>Information</h3>
 				<label class="prolabel">Fullname</label>
-				<p>{pro.fullname}</p>
+				
+				<p>{this.state.profile.fullname}</p>
+		
 				<label class="prolabel">Email</label>
-				<p>{pro.email}</p>
+				<p>{this.state.profile.email}</p>
 				<label class="prolabel">Phone</label>
-				<p>{pro.phone}</p>
+				<p>{this.state.profile.phone}</p>
 				</div>
 				<hr class="hr1"></hr>
 				<div class="buttons">
@@ -62,9 +63,8 @@ render(){
 			
 		</div>
 	</div>
-            )
-        })
-
+    </div>
+           
     )}
 }
 export default Profile;

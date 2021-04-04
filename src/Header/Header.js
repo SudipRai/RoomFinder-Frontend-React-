@@ -48,7 +48,7 @@ else{
     
       <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="/addroom">Add Room</a>
-      <a class="nav-item nav-link" href="/addroom">My Profile</a>
+      <a class="nav-item nav-link" href="/profile">My Profile</a>
       <a class="nav-item nav-link" onClick={this.logout} href="/logout">Logout</a>
       
     </div>

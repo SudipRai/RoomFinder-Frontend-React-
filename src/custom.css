@@ -225,3 +225,64 @@ text-align: right;
 	height: 90vh;
 	border-radius: 0;
   }
+
+  
+.myinfo{
+  margin-left: 30px;
+  margin-top: 50px;
+  display: block;
+  text-align: left;
+}
+h3{
+  text-decoration: underline;
+  color: #266150;
+
+}
+.prolabel{
+  font-weight: bold;
+  width: 100%;
+}
+.buttons {
+  text-align: center;
+  align-items: center;
+
+}
+.buttons button{
+  background-color: #266150;
+  margin: 5px;
+}
+hr.hr1{
+border:2px solid #266150;
+}
+
+
+.prohalf{
+background-color: #266150;
+border: 1px solid white;
+border-radius: 10px;
+  height: 70vh;
+}
+.pro{
+  width: 100%;
+  height: 70vh;
+  background-color: #E8CEBF;
+  border-radius: 25px;
+  margin-top: 35px;
+}
+.proimg img{
+  width: 100%;
+  margin-top: 20px;
+}
+.proname{
+  text-align: center;
+
+}
+.proname p{
+  font-weight: bolder;
+  font-size: 24px;
+  color: white;
+  margin: 5px;
+}
+.row{
+  width: 100%;;
+}
