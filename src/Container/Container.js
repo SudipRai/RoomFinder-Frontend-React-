@@ -19,7 +19,7 @@ class Container extends Component{
                 <Route path="/home" component={viewroom}/>
                 <Route path="/addroom" component={Addroom}/>
                 <Route path="/profile" component={Profile}/>
-                <Route path="/detail" component={Viewdetail}/>
+                <Route path="/detail/:id" component={Viewdetail}/>
             
                
             </div>

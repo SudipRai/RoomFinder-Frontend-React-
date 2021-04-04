@@ -4,7 +4,7 @@ import Register from './Register';
 import Login from './Login'
 import {Route} from 'react-router-dom'
 import axios from 'axios';
-import '../custom.css';
+import {Link} from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel'
 
 class viewroom extends Component{
@@ -79,7 +79,7 @@ render(){
 
                                 <div class="container-fluid">
                                     <div class="left-side">
-                                        <img src="room.jpg"/>
+                                    <img src={`http://localhost:90/uploads/${room.image}`} />
                                         
                                     </div>
                                     <div class="right-side">
@@ -88,7 +88,7 @@ render(){
                                             <p class="location"><i class="fas fa-map-marker-alt"></i> {room.city}</p>
                                             <p class="price">{room.price}</p>
                                             <div class="btnmore">
-                                            <button><Link to={'/detail/'+room._id}>View Details</Link></button>
+                                            <Link to={'/detail/'+room._id}><button>View Details</button></Link>
                                             <button>Add to Watchlist</button>
                                             
                                         </div>

@@ -286,3 +286,41 @@ border-radius: 10px;
 .row{
   width: 100%;;
 }
+
+
+.type label{
+  font-weight: bold;
+  font-size: 20px;
+  font-family: Impact;
+  width: 100%;
+  text-align: left;
+}
+
+.type p{
+  font-family: Georgia;
+  text-align: left;
+}
+h4{
+  font-family: Impact;
+  text-decoration: underline;
+  color:#FFDF6C;
+  text-align: left;
+}
+.tit{
+  font-family: Roboto;
+  margin-left: 10px;
+  color: #203647;
+  text-align: left;
+}
+.property-det{
+  margin-left: 20px;
+}
+.description{
+  margin-left: 20px;
+}
+.detail-img img{
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 5px;
+  
+}
