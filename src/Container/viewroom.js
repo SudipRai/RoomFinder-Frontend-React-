@@ -88,7 +88,7 @@ render(){
                                             <p class="location"><i class="fas fa-map-marker-alt"></i> {room.city}</p>
                                             <p class="price">{room.price}</p>
                                             <div class="btnmore">
-                                            <button>View Details</button>
+                                            <button><Link to={'/detail/'+room._id}>View Details</Link></button>
                                             <button>Add to Watchlist</button>
                                             
                                         </div>
