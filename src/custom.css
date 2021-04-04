@@ -235,7 +235,7 @@ text-align: right;
 }
 h3{
   text-decoration: underline;
-  color: #266150;
+  color: #203647;
 
 }
 .prolabel{
@@ -248,16 +248,16 @@ h3{
 
 }
 .buttons button{
-  background-color: #266150;
+  background-color: #203647;
   margin: 5px;
 }
 hr.hr1{
-border:2px solid #266150;
+border:3px solid #203647;
 }
 
 
 .prohalf{
-background-color: #266150;
+background-color: #203647;
 border: 1px solid white;
 border-radius: 10px;
   height: 70vh;

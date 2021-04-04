@@ -5,6 +5,7 @@ import Login from "./Login";
 import viewroom from "./viewroom";
 import Addroom from "./Addroom";
 import Profile from "./Profile";
+import Viewdetail from "./Viewdetail";
 
 
 
@@ -18,6 +19,7 @@ class Container extends Component{
                 <Route path="/home" component={viewroom}/>
                 <Route path="/addroom" component={Addroom}/>
                 <Route path="/profile" component={Profile}/>
+                <Route path="/detail" component={Viewdetail}/>
             
                
             </div>
