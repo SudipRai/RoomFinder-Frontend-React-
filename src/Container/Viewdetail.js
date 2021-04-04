@@ -120,26 +120,27 @@ render(){
 		
 		</div>
         </div>
-        <div class="owner">
-				<h4>Owner Detail</h4>
-                <div class="myinfo">
-				
-				<label class="prolabel">Fullname</label>
-				
-				<p>{this.state.profile.fullname}</p>
-		
-				<label class="prolabel">Email</label>
-				<p>{this.state.profile.email}</p>
-				<label class="prolabel">Phone</label>
-				<p>{this.state.profile.phone}</p>
-				</div>
-			</div>
-        </div>
         <div class="description">
 				<h4>Description</h4>
 				<p>{this.state.room.descrption}</p>
 			
-			</div>		
+			</div>
+        </div>
+        <div class="owner">
+				<h4>Owner Detail</h4>
+                <div class="ownerinfo">
+				
+				<label class="prolabel">Fullname : {this.state.profile.fullname}</label>
+				
+				
+		
+				<label class="prolabel">Email: {this.state.profile.email}</label>
+				
+				<label class="prolabel">Phone: {this.state.profile.phone} </label>
+				
+				</div>
+			</div>
+        		
            
 	</div>
    
