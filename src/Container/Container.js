@@ -6,6 +6,7 @@ import viewroom from "./viewroom";
 import Addroom from "./Addroom";
 import Profile from "./Profile";
 import Viewdetail from "./Viewdetail";
+import Mypost from "./Mypost";
 
 
 
@@ -20,6 +21,7 @@ class Container extends Component{
                 <Route path="/addroom" component={Addroom}/>
                 <Route path="/profile" component={Profile}/>
                 <Route path="/detail/:id" component={Viewdetail}/>
+                <Route path="/mypost" component={Mypost}/>
             
                
             </div>

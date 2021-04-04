@@ -9,9 +9,24 @@ import Carousel from 'react-bootstrap/Carousel'
 
 class Mypost extends Component{
     state = {
-        rooms : []
+        rooms : [],
+        id:localStorage.getItem('userID'),
+        config : {
+            headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
+        }
 }
-
+componentDidMount(){
+    axios.get("http://localhost:90/room/"+this.state.id,this.state.config)
+    .then((response)=>{
+        console.log(response)
+        this.setState({
+            rooms : response.data.data
+        })
+    })
+    .catch((err)=>{
+        console.log(err.response)
+    })
+}
 
 render(){
     return(
@@ -35,7 +50,7 @@ render(){
                                             <p class="location"><i class="fas fa-map-marker-alt"></i> {room.city}</p>
                                             <p class="price">{room.price}</p>
                                             <div class="btnmore">
-                                            <Link to={'/detail/'+room._id}><button>Edit</button></Link>
+                                            <Link to={'/edit/'+room._id}><button>Edit</button></Link>
                                             <button>Delete</button>
                                             
                                         </div>
