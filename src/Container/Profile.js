@@ -58,7 +58,7 @@ render(){
 				<hr class="hr1"></hr>
 				<div class="buttons">
                 <Link to={'/mypost'}><button type="submit" class="btn btn-primary">My Post</button></Link>
-					<button type="submit" class="btn btn-primary">My Watchlist</button>
+                <Link to={'/mywatchlist'}><button type="submit" class="btn btn-primary">My Watchlist</button></Link>
 				</div>
 			</div>
 			

@@ -89,7 +89,7 @@ render(){
                                             <p class="price">{room.price}</p>
                                             <div class="btnmore">
                                             <Link to={'/detail/'+room._id}><button>View Details</button></Link>
-                                            <button>Add to Watchlist</button>
+                                            <Link to={'/mywatchlist'}><button>Add to Watchlist</button></Link>
                                             
                                         </div>
                                       
