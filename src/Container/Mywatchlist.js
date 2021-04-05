@@ -35,6 +35,7 @@ deleteWatchlist = (rid) =>{
 
  }
 
+
 render(){
     return(
         

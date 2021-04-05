@@ -8,6 +8,7 @@ import Profile from "./Profile";
 import Viewdetail from "./Viewdetail";
 import Mypost from "./Mypost";
 import Mywatchlist from "./Mywatchlist";
+import AddtoWatchlist from "./AddtoWatchlist";
 
 
 
@@ -24,6 +25,7 @@ class Container extends Component{
                 <Route path="/detail/:id" component={Viewdetail}/>
                 <Route path="/mypost" component={Mypost}/>
                 <Route path="/mywatchlist" component={Mywatchlist}/>
+                <Route path="/addtowatchlist" component={AddtoWatchlist}/>
             
                
             </div>

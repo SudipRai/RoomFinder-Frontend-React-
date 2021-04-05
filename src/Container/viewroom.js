@@ -24,6 +24,8 @@ componentDidMount(){
     })
 }
 
+
+
 render(){
     return(
         <Row>
@@ -89,7 +91,8 @@ render(){
                                             <p class="price">{room.price}</p>
                                             <div class="btnmore">
                                             <Link to={'/detail/'+room._id}><button>View Details</button></Link>
-                                            <Link to={'/mywatchlist'}><button>Add to Watchlist</button></Link>
+                                            <Link to={'/addtowatchlist/'+room._id}><button>Add to Watchlist</button></Link>
+                                            
                                             
                                         </div>
                                       
