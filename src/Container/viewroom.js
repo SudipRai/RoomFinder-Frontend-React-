@@ -9,12 +9,19 @@ import Carousel from 'react-bootstrap/Carousel'
 
 class viewroom extends Component{
     state = {
-        rooms : []
+        rooms : [],
+        room : {},
+        userID:localStorage.getItem('userID'),
+
+        config : {
+          headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
+      }
 }
 componentDidMount(){
+ 
     axios.get("http://localhost:90/room")
     .then((response)=>{
-        console.log(response)
+        
         this.setState({
             rooms : response.data.data
         })
@@ -23,6 +30,35 @@ componentDidMount(){
         console.log(err.response)
     })
 }
+addWatchlist = (wid) =>{
+
+      axios.get("http://localhost:90/getroom/"+ wid,this.state.config)
+      .then((response)=>{
+          console.log(response)
+           
+          const data={
+            room:response.data.data,
+            userid:this.state.userID
+          }
+      
+     
+      axios.post('http://localhost:90/watchlist', data, this.state.config)
+      .then((response)=>{
+        console.log(data)
+          console.log(response)
+          
+      })
+      .catch((err)=>{
+          console.log(err.response)
+      })
+    
+      })
+      .catch((err)=>{
+          console.log(err.response)
+      })
+ 
+}
+
 
 
 
@@ -91,7 +127,8 @@ render(){
                                             <p class="price">{room.price}</p>
                                             <div class="btnmore">
                                             <Link to={'/detail/'+room._id}><button>View Details</button></Link>
-                                            <Link to={'/addtowatchlist/'+room._id}><button>Add to Watchlist</button></Link>
+      
+                                            <button onClick={this.addWatchlist.bind(this, room._id)}>Add to Watchlist</button>
                                             
                                             
                                         </div>
