@@ -23,6 +23,17 @@ componentDidMount(){
         console.log(err.response)
     })
 }
+deleteWatchlist = (rid) =>{
+    axios.delete('http://localhost:90/watchlist/' + rid,  this.state.config)
+    .then((response)=>{
+        console.log(response)
+        alert("Deleted")
+    })
+    .catch((err)=>{
+        console.log(err.response)
+    })
+
+ }
 
 render(){
     return(
@@ -47,7 +58,7 @@ render(){
                                             <p class="price">{room.room.price}</p>
                                             <div class="btnmore">
                                             
-                                            <button>Delete</button>
+                                            <button onClick={this.deleteWatchlist.bind(this, room._id)}>Delete</button>
                                             
                                         </div>
                                       

@@ -72,10 +72,10 @@ render(){
         
         this.state.rooms.map((room)=>{
                        
-                        return (<div>
+                        return (
                           
                                 
-                            <div class="out-body">
+                            
 
                                 <div class="container-fluid">
                                     <div class="left-side">
@@ -99,8 +99,8 @@ render(){
                                     </div>
                                 </div>
 
-                            </div>
-                            </div>
+                            
+                            
                             ) 
                     })
                 }
