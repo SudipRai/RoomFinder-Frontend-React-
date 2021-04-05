@@ -5,7 +5,7 @@ import Login from './Login'
 import {Route} from 'react-router-dom'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import Carousel from 'react-bootstrap/Carousel'
+import { useAlert } from 'react-alert'
 
 class Mypost extends Component{
     state = {
@@ -27,7 +27,17 @@ componentDidMount(){
         console.log(err.response)
     })
 }
+deleteRoom = (rid) =>{
+    axios.delete('http://localhost:90/room/' + rid,  this.state.config)
+    .then((response)=>{
+        console.log(response)
+        alert("Deleted")
+    })
+    .catch((err)=>{
+        console.log(err.response)
+    })
 
+ }
 render(){
     return(
         
@@ -51,7 +61,7 @@ render(){
                                             <p class="price">{room.price}</p>
                                             <div class="btnmore">
                                             <Link to={'/edit/'+room._id}><button>Edit</button></Link>
-                                            <button>Delete</button>
+                                            <button onClick={this.deleteRoom.bind(this, room._id)}>Delete</button>
                                             
                                         </div>
                                       
