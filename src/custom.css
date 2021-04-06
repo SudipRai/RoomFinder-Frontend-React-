@@ -343,3 +343,36 @@ h4{
   font-family: Roboto;
   margin-left: 150px;
 }
+.search
+{
+width: 50% !important;
+height: 60px !important;
+display: inline-block !important;
+text-align: center;
+box-shadow: 0;
+background-color: #f3f3f3 !important;
+margin: 20px auto ;
+border-radius: 25px 0 0 25px !important;
+
+outline: none !important;
+
+}
+.searching{
+  width: 50% !important;
+height: 60px !important;
+margin: 20px auto ;
+}
+.searching button{
+height: 60px !important;
+width: 60px;
+display: inline-block !important;
+text-align: center;
+box-shadow: 0;
+background-color: #f3f3f3 !important;
+margin: 20px auto ;
+border-radius: 0 25px 25px 0 !important;
+border: 1px solid grey;
+outline: none;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+color: grey;
+}

@@ -11,6 +11,7 @@ class viewroom extends Component{
     state = {
         rooms : [],
         room : {},
+        search:"",
         userID:localStorage.getItem('userID'),
 
         config : {
@@ -65,14 +66,18 @@ addWatchlist = (wid) =>{
 render(){
     return(
         <Row>
+          
         <Carousel>
+        
         <Carousel.Item>
+        
             <div className="slide">
           <img
             className="d-block w-100"
             src="123.jpg"
             alt="First slide"
           />
+          
           </div>
           <Carousel.Caption>
             <h3>Find the Perfect Home</h3>
@@ -106,6 +111,12 @@ render(){
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      <div className="searching">
+        <form>
+      <input class="form-control search" type="text" placeholder="Search by Location" aria-label="Search" value={this.state.search} onChange={(event)=>{this.setState({search:event.target.value})}}></input>
+      <Link to={'/search/'+this.state.search}><button>Go</button></Link>
+      </form>
+      </div>
       {
          
         this.state.rooms.map((room)=>{

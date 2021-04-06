@@ -10,6 +10,7 @@ import Mypost from "./Mypost";
 import Mywatchlist from "./Mywatchlist";
 import MypostUpdate from "./MypostUpdate";
 import ProfileUpdate from "./ProfileUpdate";
+import SearchResult from "./SearchResult";
 
 
 
@@ -25,6 +26,7 @@ class Container extends Component{
                 <Route path="/addroom" component={Addroom}/>
                 <Route path="/profile" component={Profile}/>
                 <Route path="/detail/:id" component={Viewdetail}/>
+                <Route path="/search/:city" component={SearchResult}/>
                 <Route path="/edit/:id" component={MypostUpdate}/>
                 <Route path="/profileedit/:id" component={ProfileUpdate}/>
                 <Route path="/mypost" component={Mypost}/>
