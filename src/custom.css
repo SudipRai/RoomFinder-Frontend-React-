@@ -291,7 +291,7 @@ border-radius: 10px;
 
 
 .type label{
-  font-weight: bold;
+  font-weight: 600;
   font-size: 20px;
   font-family: Impact;
   width: 100%;
@@ -336,4 +336,10 @@ h4{
   color: #203647;
   border: none;
   border-radius: 10px;
+}
+.similar{
+  padding: 20px;
+  float: left;
+  font-family: Roboto;
+  margin-left: 150px;
 }

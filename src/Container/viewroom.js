@@ -75,8 +75,8 @@ render(){
           />
           </div>
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>Find the Perfect Home</h3>
+            <p>Get what you need</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -87,8 +87,8 @@ render(){
           />
       
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Contact with owner directly</h3>
+            <p>Reasonable price</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -101,13 +101,13 @@ render(){
           </div>
       
           <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            <h3>Different location</h3>
+            <p>Kathmandu</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
       {
-        
+         
         this.state.rooms.map((room)=>{
                        
                         return (
@@ -124,7 +124,7 @@ render(){
                                         <div class="details">
                                             <h1 class="title">{room.title}</h1>
                                             <p class="location"><i class="fas fa-map-marker-alt"></i> {room.city}</p>
-                                            <p class="price">{room.price}</p>
+                                            <p class="price">{room.price}/ per month</p>
                                             <div class="btnmore">
                                             <Link to={'/detail/'+room._id}><button>View Details</button></Link>
       

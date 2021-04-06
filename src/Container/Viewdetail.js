@@ -9,7 +9,9 @@ class Viewdetail extends Component{
     state = {
         room : [],
         profile : [],
+		rooms:[],
         userID:localStorage.getItem('userid'),
+		city:localStorage.getItem('city'),
         id : this.props.match.params.id,
         config : {
             headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
@@ -21,6 +23,7 @@ componentDidMount(){
         .then((response)=>{
             console.log(response)
             localStorage.setItem('userid',response.data.data.userID)
+			localStorage.setItem('city',response.data.data.city)
             this.setState({
                 room : response.data.data
                 
@@ -45,10 +48,38 @@ componentDidMount(){
     .catch((err)=>{
         console.log(err.response)
     })
-])
+,
+axios.get("http://localhost:90/related/room/"+ this.state.city)
+.then((response)=>{
+	console.log(response)
+	console.log(this.state.userID)
+	this.setState({
+		rooms : response.data.data
+	})
+})
+.catch((err)=>{
+	console.log(err.response)
+})
+	])
+
 }
-
-
+newDetail = (did) =>{
+axios.get("http://localhost:90/home/getroom/"+ did)
+.then((response)=>{
+	console.log(response)
+	localStorage.setItem('userid',response.data.data.userID)
+	localStorage.setItem('city',response.data.data.city)
+	this.setState({
+		room : response.data.data
+		
+		
+	})
+	
+})
+.catch((err)=>{
+	console.log(err.response)
+})
+}
 
 render(){
     return(<div>
@@ -64,7 +95,7 @@ render(){
     <div class="col-md-5">
 	<div class="detail-room">
 		<h1 class="tit">{this.state.room.title}</h1>
-		<h2 class="tit">{this.state.room.price}</h2>
+		<h2 class="tit">{this.state.room.price}/ per month</h2>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="property-det">
@@ -147,9 +178,44 @@ render(){
 
 </div>
 
+<h2 className="similar">Property in Similar Location</h2>
+<div class="container-fluid" related>
+		<div class="row"> 
+{
+	
+this.state.rooms.map((rooom)=>{
+                       
+					   return (
+						 
 
+						
+			<div class="col-md-6">
+				<div class="detail-img">
+					<img src={`http://localhost:90/uploads/${rooom.image}`}/>
+				</div>
+					<div class="">
+				<h1 class="title">{rooom.title}</h1>
+				<p class="location"><i class="fas fa-map-marker-alt"></i> {rooom.city}</p>
+				<p class="price">{rooom.price}/ per month</p>
+				<div class="btnmore">
+				<button onClick={this.newDetail.bind(this, rooom._id)}>View Detail</button>
+			</div>
+
+				
+			</div>
+			</div>
+			
+			
+	
+
+
+)}
+					   )}
+					   	</div>
+	</div>
 </div>
-    )
+    
+)
 }
 }
 export default Viewdetail;
