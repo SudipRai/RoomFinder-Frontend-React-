@@ -3,7 +3,7 @@ import axios from 'axios';
 
 class Addroom extends Component{
     state={
-        image:"",
+        file:"",
         title:"",
         propertytype:"",
         roomnumber:"",
@@ -13,32 +13,53 @@ class Addroom extends Component{
         facility:"",
         price:"",
         description:"",
-        userID:"{localStorage.getItem('userID')}",
+        userID:localStorage.getItem('userID'),
         config : {
             headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
         }
     }
-    addroom=()=>{
-        const data={
-            image:this.state.image,
-            title:this.state.title,
-            propertytype:this.state.propertytype,
-            roomnumber:this.state.roomnumber,
-            district:this.state.district,
-            city:this.state.city,
-            street:this.state.street,
-            facility:this.state.facility,
-            price:this.state.price,
-            description:this.state.description,
-            userID:this.state.userID
+    inputHandler=(e)=>{
+      this.setState({
+          [e.target.name] : e.target.value
+      })
+  }
+  fileHandler = (e)=>{
+      this.setState({
+          file : e.target.files[0]
+      })
+  }
+    addroom=(e)=>{
+      e.preventDefault();
+      const data = new FormData() 
+
+      data.append('title', this.state.title)
+      data.append('propertytype', this.state.propertytype)
+      data.append('roomnumber', this.state.roomnumber)
+      data.append('district', this.state.district)
+      data.append('city', this.state.city)
+      data.append('street', this.state.street)
+      data.append('facility', this.state.facility)
+      data.append('price', this.state.price)
+      data.append('descrption', this.state.descrption)
+      data.append('userID', this.state.userID)
+      data.append('file', this.state.file)
+      
+      
         
             
-        }
-        axios.post("http://localhost:90/upload",data)
+        
+        axios.post("http://localhost:90/upload",data,this.state.config)
         .then((response)=>{
+          console.log(response)
             const roomid=response.data.data._id;
-            axios.post("http://localhost:90/upload"+roomid,this.state.config,this.state)
-            .then()
+            
+            const data1 = new FormData() 
+
+            data1.append('file', this.state.file)
+            axios.put("http://localhost:90/upload/"+roomid,data1,this.state.config)
+            .then((response)=>{
+                  console.log(response)
+            })
             .catch()
 
         })
@@ -55,48 +76,48 @@ class Addroom extends Component{
 	<form>
 		 <div class="form-group1">
 		 	 <label for="inputTitle">Choose a picture</label><br></br>
-           <input type="file" name="image"  multiple/>
+           <input type="file" name="file" onChange={this.fileHandler}  multiple/>
         </div>
 
   <div class="form-row">
     <div class="form-group1 col-md-6">
       <label for="inputTitle">Title</label>
-      <input type="text" class="form-control" id="inputTitle" placeholder="Title"/>
+      <input type="text" name="title" class="form-control" onChange={this.inputHandler} id="inputTitle" placeholder="Title"/>
     </div>
     <div class="form-group1 col-md-6">
       <label for="inputproperty">Types of Property</label>
-      <input type="text" class="form-control" id="inputPassword4" placeholder="Property Type"/>
+      <input type="text" name="propertytype" class="form-control" onChange={this.inputHandler} id="inputPassword4" placeholder="Property Type"/>
     </div>
   </div>
   <div class="form-group1">
     <label for="inputRoomno">Number of Rooms</label>
-    <input type="text" class="form-control" id="inputroomno" placeholder="Number of rooms"/>
+    <input type="text" name="roomnumber" class="form-control" onChange={this.inputHandler} id="inputroomno" placeholder="Number of rooms"/>
   </div>
   <div class="form-group1">
     <label for="inputPrice">Price</label>
-    <input type="text" class="form-control" id="inputPrice" placeholder="Price"/>
+    <input type="text" name="price" class="form-control" onChange={this.inputHandler} id="inputPrice" placeholder="Price"/>
   </div>
   <div class="form-row">
     <div class="form-group1 col-md-6">
       <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity"/>
+      <input type="text" name="city" class="form-control" onChange={this.inputHandler} id="inputCity"/>
     </div>
      <div class="form-group1 col-md-4">
       <label for="inputDistrict">District</label>
-      <input type="text" class="form-control" id="inputDistrict"/>
+      <input type="text" name="district" class="form-control" onChange={this.inputHandler} id="inputDistrict"/>
     </div>
     <div class="form-group1 col-md-2">
       <label for="inputStreet">Street</label>
-      <input type="text" class="form-control" id="inputStreet"/>
+      <input type="text" name="street" class="form-control" onChange={this.inputHandler} id="inputStreet"/>
     </div>
   </div>
     <div class="form-group1">
     <label for="facility">Facility</label>
-    <input type="text" class="form-control" id="inputfacility" placeholder="Facility"/>
+    <input type="text" name="facility" class="form-control" onChange={this.inputHandler} id="inputfacility" placeholder="Facility"/>
   </div>
     <div class="form-group1">
     <label for="inputDesc">Descriptions</label>
-    <input type="text" class="form-control" id="inputdesc" placeholder="Descriptions"/>
+    <input type="text" name="descrption" class="form-control" onChange={this.inputHandler} id="inputdesc" placeholder="Descriptions"/>
   </div>
 
   <button type="submit" onClick={this.addroom} class="btn btn-primary btnadd">Add Post</button>

@@ -125,7 +125,7 @@ render(){
     <input type="text" name="descrption" class="form-control" value={this.state.descrption} onChange={this.changeHandler} id="inputdesc" placeholder="Descriptions"/>
   </div>
 
-  <button type="submit" onClick={this.updateroom} class="btn btn-primary btnadd">Add Post</button>
+  <button type="submit" onClick={this.updateroom} class="btn btn-primary btnadd">Update</button>
 </form>
 </div>
 <div class="col-md-4">
