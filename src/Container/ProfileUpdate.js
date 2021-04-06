@@ -11,7 +11,7 @@ class ProfileUpdate extends Component{
         fullname:"",
         email:"",
         phone:"", 
-        userID:localStorage.getItem('userID'),
+        password:"",
         config : {
             headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
         }
@@ -30,14 +30,15 @@ componentDidMount(){
         this.setState({
             fullname:response.data.data.fullname,
             email:response.data.data.email,
-            phone:response.data.data.phone
+            phone:response.data.data.phone,
+            password:response.data.data.password
         })
     })
     .catch((err)=>{
         console.log(err.response)
     })
 }
-updateroom = (e)=>{
+updateProfile = (e)=>{
     e.preventDefault();
 
     axios.put('http://localhost:90/profile/update/'+this.state.id,this.state)
