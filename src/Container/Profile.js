@@ -41,7 +41,9 @@ render(){
 			<div class="proname">
 				<p>{this.state.profile.fullname}</p>
 			</div>
-			
+			<div className="editbtn">
+			<Link to={'/profileedit/'+this.state.profile._id}><button type="submit" class="btn btn-primary">Edit Profile</button></Link>
+			</div>
 		</div>
 		<div class="col-md-8">
 			<div class="myinfo">

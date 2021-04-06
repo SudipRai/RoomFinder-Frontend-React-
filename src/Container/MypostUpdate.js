@@ -129,7 +129,7 @@ render(){
 </form>
 </div>
 <div class="col-md-4">
-	<img src="room.jpg"/>
+	<img src={`http://localhost:90/uploads/${this.state.image}`}/>
 </div>
 </div>
 </div>

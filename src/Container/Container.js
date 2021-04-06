@@ -9,6 +9,7 @@ import Viewdetail from "./Viewdetail";
 import Mypost from "./Mypost";
 import Mywatchlist from "./Mywatchlist";
 import MypostUpdate from "./MypostUpdate";
+import ProfileUpdate from "./ProfileUpdate";
 
 
 
@@ -25,8 +26,10 @@ class Container extends Component{
                 <Route path="/profile" component={Profile}/>
                 <Route path="/detail/:id" component={Viewdetail}/>
                 <Route path="/edit/:id" component={MypostUpdate}/>
+                <Route path="/profileedit/:id" component={ProfileUpdate}/>
                 <Route path="/mypost" component={Mypost}/>
                 <Route path="/mywatchlist" component={Mywatchlist}/>
+                
                 
             
                

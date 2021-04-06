@@ -250,6 +250,8 @@ h3{
 .buttons button{
   background-color: #203647;
   margin: 5px;
+  border: none;
+ 
 }
 hr.hr1{
 border:3px solid #203647;
@@ -328,4 +330,10 @@ h4{
 }
 .owner label{
   text-align: left;
+}
+.editbtn button{
+  background-color: #E8CEBF;
+  color: #203647;
+  border: none;
+  border-radius: 10px;
 }
