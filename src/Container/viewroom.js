@@ -1,8 +1,5 @@
 import { Component} from "react";
 import {Container, Row , Col} from 'react-bootstrap';
-import Register from './Register';
-import Login from './Login'
-import {Route} from 'react-router-dom'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel'
@@ -32,7 +29,11 @@ componentDidMount(){
     })
 }
 addWatchlist = (wid) =>{
+  if (localStorage.getItem('token')==null) {
+    window.location.href = '/login'
 
+  }
+  else{
       axios.get("http://localhost:90/getroom/"+ wid,this.state.config)
       .then((response)=>{
           console.log(response)
@@ -47,6 +48,8 @@ addWatchlist = (wid) =>{
       .then((response)=>{
         console.log(data)
           console.log(response)
+          window.location.href = '/mywatchlist'
+          alert("Added to watchlist")
           
       })
       .catch((err)=>{
@@ -58,6 +61,7 @@ addWatchlist = (wid) =>{
           console.log(err.response)
       })
  
+}
 }
 
 
@@ -115,6 +119,7 @@ render(){
         <form>
       <input class="form-control search" type="text" placeholder="Search by Location" aria-label="Search" value={this.state.search} onChange={(event)=>{this.setState({search:event.target.value})}}></input>
       <Link to={'/search/'+this.state.search}><button>Go</button></Link>
+      
       </form>
       </div>
       {

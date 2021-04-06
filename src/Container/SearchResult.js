@@ -1,8 +1,4 @@
 import { Component} from "react";
-import {Container, Row , Col} from 'react-bootstrap';
-import Register from './Register';
-import Login from './Login'
-import {Route} from 'react-router-dom'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { useAlert } from 'react-alert'
@@ -11,6 +7,7 @@ class SearchResult extends Component{
     state = {
         rooms : [],
         city:this.props.match.params.city,
+        
         userID:localStorage.getItem('userID'),
         config : {
             headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
@@ -20,13 +17,19 @@ componentDidMount(){
     axios.get("http://localhost:90/related/room/"+this.state.city)
     .then((response)=>{
         console.log(response)
+        if (response.data.count==0) {
+            alert("No data found")
+            window.location.href = '/home'
+        }
         this.setState({
             rooms : response.data.data
+            
         })
     })
     .catch((err)=>{
         console.log(err.response)
     })
+   
 }
 
 addWatchlist = (wid) =>{
@@ -59,12 +62,17 @@ addWatchlist = (wid) =>{
 }
 
 render(){
+ 
+    
     return(
-        
-        
         this.state.rooms.map((room)=>{
+      
+       
                        
-                        return (<div>
+                        return (
+                       
+                        
+                        <div>
                           
                                 
                             <div class="out-body">
@@ -96,10 +104,13 @@ render(){
                             </div>
                             </div>
                             ) 
+                        
+                        
                     })
               
+                
     )
-    
+                
 }
 }
 export default SearchResult;

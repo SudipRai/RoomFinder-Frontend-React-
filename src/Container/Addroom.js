@@ -59,6 +59,8 @@ class Addroom extends Component{
             axios.put("http://localhost:90/upload/"+roomid,data1,this.state.config)
             .then((response)=>{
                   console.log(response)
+                  window.location.href = '/home'
+                  alert("Successfully added")
             })
             .catch()
 

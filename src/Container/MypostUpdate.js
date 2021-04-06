@@ -1,11 +1,7 @@
 import { Component} from "react";
-import {Container, Row , Col} from 'react-bootstrap';
-import Register from './Register';
-import Login from './Login'
-import {Route} from 'react-router-dom'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import Carousel from 'react-bootstrap/Carousel'
+
 
 class MypostUpdate extends Component{
     state = {
@@ -66,6 +62,7 @@ updateroom = (e)=>{
     axios.put('http://localhost:90/room/update/'+this.state.id,this.state)
     .then((response)=>{
         console.log(response)
+        alert("Updated")
     })
     .catch((err)=>{
         console.log(err.response)

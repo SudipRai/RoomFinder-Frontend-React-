@@ -44,6 +44,8 @@ updateProfile = (e)=>{
     axios.put('http://localhost:90/profile/update/'+this.state.id,this.state)
     .then((response)=>{
         console.log(response)
+        window.location.href = '/profile'
+        
     })
     .catch((err)=>{
         console.log(err.response)

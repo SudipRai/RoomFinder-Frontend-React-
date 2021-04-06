@@ -22,19 +22,23 @@ componentDidMount(){
     .catch((err)=>{
         console.log(err.response)
     })
+    
 }
 deleteWatchlist = (rid) =>{
     axios.delete('http://localhost:90/watchlist/' + rid,  this.state.config)
     .then((response)=>{
         console.log(response)
-        alert("Deleted")
+        alert("Deleted");
+        
     })
     .catch((err)=>{
         console.log(err.response)
     })
 
  }
-
+ componentDidUpdate(){
+    this.componentDidMount();
+}
 
 render(){
     return(
