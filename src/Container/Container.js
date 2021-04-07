@@ -11,6 +11,7 @@ import Mywatchlist from "./Mywatchlist";
 import MypostUpdate from "./MypostUpdate";
 import ProfileUpdate from "./ProfileUpdate";
 import SearchResult from "./SearchResult";
+import FilterResult from "./FilterResult";
 
 
 
@@ -27,6 +28,7 @@ class Container extends Component{
                 <Route path="/profile" component={Profile}/>
                 <Route path="/detail/:id" component={Viewdetail}/>
                 <Route path="/search/:city" component={SearchResult}/>
+                <Route path="/filter/:property" component={FilterResult}/>
                 <Route path="/edit/:id" component={MypostUpdate}/>
                 <Route path="/profileedit/:id" component={ProfileUpdate}/>
                 <Route path="/mypost" component={Mypost}/>

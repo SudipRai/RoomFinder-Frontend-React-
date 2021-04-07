@@ -9,6 +9,9 @@ class viewroom extends Component{
         rooms : [],
         room : {},
         search:"",
+        flat:"Flat",
+        room:"Room",
+        house:"House",
         userID:localStorage.getItem('userID'),
 
         config : {
@@ -118,9 +121,16 @@ render(){
       <div className="searching">
         <form>
       <input class="form-control search" type="text" placeholder="Search by Location" aria-label="Search" value={this.state.search} onChange={(event)=>{this.setState({search:event.target.value})}}></input>
-      <Link to={'/search/'+this.state.search}><button>Go</button></Link>
+      <Link to={'/search/'+this.state.search}><button class="go">Go</button></Link>
+      
+     
       
       </form>
+      </div>
+      <div className="searching">
+      <Link to={'/filter/'+this.state.flat}><button class="filter">Flat</button></Link>
+      <Link to={'/filter/'+this.state.room}><button class="filter">Room</button></Link>
+      <Link to={'/filter/'+this.state.house}><button class="filter">House</button></Link>
       </div>
       {
          

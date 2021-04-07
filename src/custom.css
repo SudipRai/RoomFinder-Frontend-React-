@@ -345,7 +345,7 @@ h4{
 }
 .search
 {
-width: 50% !important;
+width: 40% !important;
 height: 60px !important;
 display: inline-block !important;
 text-align: center;
@@ -358,24 +358,39 @@ outline: none !important;
 
 }
 .searching{
-  width: 50% !important;
+  width: 90% !important;
 height: 60px !important;
 margin: 20px auto ;
 }
-.searching button{
-height: 60px !important;
-width: 60px;
-display: inline-block !important;
-text-align: center;
-box-shadow: 0;
-background-color: #f3f3f3 !important;
-margin: 20px auto ;
-border-radius: 0 25px 25px 0 !important;
-border: 1px solid grey;
-outline: none;
-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-color: grey;
-}
+
 .jumbotron{
   margin-top: 30px;
 }
+.searching .filter{
+  height: 60px !important;
+  width: 150px;
+  display: inline-block !important;
+  text-align: center;
+  box-shadow: 0;
+  background-color: #f3f3f3 !important;
+  margin-left: 20px;
+ border-radius: 25px;
+  border: 1px solid grey;
+  outline: none;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: grey;
+  }
+  .go{
+    height: 60px !important;
+    width: 60px;
+    display: inline-block !important;
+    text-align: center;
+    box-shadow: 0;
+    background-color: #f3f3f3 !important;
+    margin: 20px auto ;
+    border-radius: 0 25px 25px 0 !important;
+    border: 1px solid grey;
+    outline: none;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: grey;
+    }
