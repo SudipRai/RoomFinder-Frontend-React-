@@ -11,6 +11,7 @@ class Mywatchlist extends Component{
             headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
         }
 }
+//showing watchlist
 componentDidMount(){
     axios.get("http://localhost:90/watchlist/"+this.state.id,this.state.config)
     .then((response)=>{
@@ -24,6 +25,8 @@ componentDidMount(){
     })
     
 }
+
+//deleting watchlist
 deleteWatchlist = (rid) =>{
     axios.delete('http://localhost:90/watchlist/' + rid,  this.state.config)
     .then((response)=>{
@@ -34,16 +37,15 @@ deleteWatchlist = (rid) =>{
     .catch((err)=>{
         console.log(err.response)
     })
-
  }
+ //reloads the page after delete
  componentDidUpdate(){
     this.componentDidMount();
 }
 
 render(){
     return(
-        
-        
+        //design to show watchlist
         this.state.rooms.map((room)=>{
                        
                         return (<div>

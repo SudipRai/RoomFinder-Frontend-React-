@@ -13,6 +13,8 @@ class SearchResult extends Component{
             headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
         }
 }
+
+//getting the search result
 componentDidMount(){
     axios.get("http://localhost:90/related/room/"+this.state.city)
     .then((response)=>{
@@ -32,12 +34,11 @@ componentDidMount(){
    
 }
 
+//add post to watchlist
 addWatchlist = (wid) =>{
-
     axios.get("http://localhost:90/getroom/"+ wid,this.state.config)
     .then((response)=>{
-        console.log(response)
-         
+        console.log(response) 
         const data={
           room:response.data.data,
           userid:this.state.userID
@@ -62,19 +63,11 @@ addWatchlist = (wid) =>{
 }
 
 render(){
- 
-    
     return(
-        this.state.rooms.map((room)=>{
-      
-       
-                       
+        this.state.rooms.map((room)=>{              
                         return (
                        
-                        
-                        <div>
-                          
-                                
+                         <div>     
                             <div class="out-body">
 
                                 <div class="container-fluid">
@@ -88,29 +81,17 @@ render(){
                                             <p class="location"><i class="fas fa-map-marker-alt"></i> {room.city}</p>
                                             <p class="price">{room.price}</p>
                                             <div class="btnmore">
-                                            <Link to={'/detail/'+room._id}><button>View Details</button></Link>
-      
-                                            <button onClick={this.addWatchlist.bind(this, room._id)}>Add to Watchlist</button>
-                                            
-                                            
-                                        </div>
-                                      
-
-                                            
-                                        </div>
+                                            <Link to={'/detail/'+room._id}><button>View Details</button></Link>      
+                                            <button onClick={this.addWatchlist.bind(this, room._id)}>Add to Watchlist</button>                                            
+                                       </div>
+                                      </div>
                                     </div>
                                 </div>
-
                             </div>
                             </div>
-                            ) 
-                        
-                        
-                    })
-              
-                
-    )
-                
+                            )                       
+                    })                     
+    )                
 }
 }
 export default SearchResult;

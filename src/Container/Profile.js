@@ -14,6 +14,8 @@ class Profile extends Component{
             headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
         }
 }
+
+//get the detail of user
 componentDidMount(){
     axios.get("http://localhost:90/user/"+ this.state.id, this.state.config)
     .then((response)=>{
@@ -28,7 +30,7 @@ componentDidMount(){
 }
 render(){
     return(
-        
+        //design of profile page
       <div>
 <div class="container-md pro">
 	<div className="row">

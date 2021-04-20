@@ -3,11 +3,12 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 class Viewdetail extends Component{
+	
     state = {
         room : [],
-        profile : [],
+        profile : {},
 		rooms:[],
-        userID:localStorage.getItem('userid'),
+        userId:localStorage.getItem('userId'),
 		city:localStorage.getItem('city'),
         id : this.props.match.params.id,
         config : {
@@ -15,61 +16,64 @@ class Viewdetail extends Component{
         }
 }
 componentDidMount(){
+
     Promise.all([
+
+	//gets all the post
         axios.get("http://localhost:90/home/getroom/"+ this.state.id)
         .then((response)=>{
             console.log(response)
-            localStorage.setItem('userid',response.data.data.userID)
+            const ownerid=response.data.data.userID
 			localStorage.setItem('city',response.data.data.city)
             this.setState({
-                room : response.data.data
-                
-                
+                room : response.data.data,   
             })
-            
+
+			//show the details of person who uploaded the post
+			axios.get("http://localhost:90/home/owner/"+ ownerid)
+				.then((response)=>{
+				console.log(response)
+				console.log(this.state.userId)
+				this.setState({	
+				profile : response.data.data
+			})
+				
+			})
+			.catch((err)=>{
+				console.log(err.response)
+			})
+						
         })
         .catch((err)=>{
             console.log(err.response)
-        }),
+        }),  
+  // showing the realted post
+		axios.get("http://localhost:90/related/room/"+ this.state.city)
+		.then((response)=>{
+			console.log(response)
+			console.log(this.state.userId)
+			this.setState({
+				rooms : response.data.data
+			})
+		})
+		.catch((err)=>{
+			console.log(err.response)
+		})
 
-  
-    
-    axios.get("http://localhost:90/home/owner/"+ this.state.userID)
-    .then((response)=>{
-        console.log(response)
-        console.log(this.state.userID)
-        this.setState({
-            profile : response.data.data
-        })
-    })
-    .catch((err)=>{
-        console.log(err.response)
-    })
-,
-axios.get("http://localhost:90/related/room/"+ this.state.city)
-.then((response)=>{
-	console.log(response)
-	console.log(this.state.userID)
-	this.setState({
-		rooms : response.data.data
-	})
-})
-.catch((err)=>{
-	console.log(err.response)
-})
-	])
+			])
 
-}
+} 
+
+//showing the details of related post
 newDetail = (did) =>{
+	
 axios.get("http://localhost:90/home/getroom/"+ did)
 .then((response)=>{
 	console.log(response)
 	localStorage.setItem('userid',response.data.data.userID)
 	localStorage.setItem('city',response.data.data.city)
 	this.setState({
-		room : response.data.data
-		
-		
+		room : response.data.data	
 	})
 	
 })
@@ -165,6 +169,8 @@ render(){
 				<label class="prolabel">Email: {this.state.profile.email}</label>
 				
 				<label class="prolabel">Phone: {this.state.profile.phone} </label>
+		
+	
 				
 				</div>
 			</div>
@@ -174,6 +180,7 @@ render(){
    
 
 </div>
+
 
 <h2 className="similar">Property in Similar Location</h2>
 <div class="container-fluid" related>

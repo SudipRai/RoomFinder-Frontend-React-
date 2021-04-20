@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 
+// updating the post uploaded by user
 class MypostUpdate extends Component{
     state = {
         
@@ -34,6 +35,8 @@ fileHandler = (e)=>{
         image : e.target.files[0]
     })
 }
+
+//getting the details of post
 componentDidMount(){
     axios.get("http://localhost:90/getroom/"+this.state.id,this.state.config)
     .then((response)=>{
@@ -56,6 +59,7 @@ componentDidMount(){
     })
 }
 
+//updating the post
 updateroom = (e)=>{
     e.preventDefault();
 
@@ -71,16 +75,12 @@ updateroom = (e)=>{
     
 render(){
     return(
+      //design form for update post
         <div>
             <div class="container-fluid">
 		<div class="row">
 			<div class="col-md-8">
 	<form>
-		 {/* <div class="form-group1">
-		 	 <label for="inputTitle">Choose a picture</label><br></br>
-           <input type="file" name="image" value={this.state.rooms.image} onChange={this.fileHandler}  multiple/>
-        </div> */}
-
   <div class="form-row">
     <div class="form-group1 col-md-6">
       <label for="inputTitle">Title</label>

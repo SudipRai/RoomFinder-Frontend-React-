@@ -18,20 +18,24 @@ class Addroom extends Component{
             headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
         }
     }
+    //for input text
     inputHandler=(e)=>{
       this.setState({
           [e.target.name] : e.target.value
       })
   }
+
+  //for files
   fileHandler = (e)=>{
       this.setState({
           file : e.target.files[0]
       })
   }
+
+  //adding post 
     addroom=(e)=>{
       e.preventDefault();
       const data = new FormData() 
-
       data.append('title', this.state.title)
       data.append('propertytype', this.state.propertytype)
       data.append('roomnumber', this.state.roomnumber)
@@ -43,11 +47,6 @@ class Addroom extends Component{
       data.append('descrption', this.state.descrption)
       data.append('userID', this.state.userID)
       data.append('file', this.state.file)
-      
-      
-        
-            
-        
         axios.post("http://localhost:90/upload",data,this.state.config)
         .then((response)=>{
           console.log(response)
@@ -71,6 +70,7 @@ class Addroom extends Component{
     }
     render(){
         return(
+          //design for adding post
             <div>
             <div class="container-fluid">
 		<div class="row">

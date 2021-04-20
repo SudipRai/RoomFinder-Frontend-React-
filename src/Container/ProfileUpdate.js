@@ -23,6 +23,7 @@ changeHandler = (e)=>{
     })
      
 }
+//get user detail in current page
 componentDidMount(){
     axios.get("http://localhost:90/user/"+this.state.id,this.state.config)
     .then((response)=>{
@@ -38,19 +39,19 @@ componentDidMount(){
         console.log(err.response)
     })
 }
+//updates profile
 updateProfile = (e)=>{
     e.preventDefault();
-
     axios.put('http://localhost:90/profile/update/'+this.state.id,this.state)
     .then((response)=>{
         console.log(response)
-        window.location.href = '/profile'
-        
+        window.location.href = '/profile'     
     })
     .catch((err)=>{
         console.log(err.response)
     })
 }
+
     render(){
         return(
                  

@@ -4,6 +4,8 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { useAlert } from 'react-alert'
 
+// to show the post uploaded by current user
+
 class Mypost extends Component{
     state = {
         rooms : [],
@@ -13,6 +15,7 @@ class Mypost extends Component{
         }
 }
 componentDidMount(){
+// get the post 
     axios.get("http://localhost:90/room/"+this.state.id,this.state.config)
     .then((response)=>{
         console.log(response)
@@ -24,6 +27,8 @@ componentDidMount(){
         console.log(err.response)
     })
 }
+
+//delete the post
 deleteRoom = (rid) =>{
     axios.delete('http://localhost:90/room/' + rid,  this.state.config)
     .then((response)=>{
@@ -38,16 +43,12 @@ deleteRoom = (rid) =>{
  }
 render(){
     return(
-        
-        
+        //my post page design
         this.state.rooms.map((room)=>{
                        
-                        return (<div>
-                          
-                                
+                        return (<div>    
                             <div class="out-body">
-
-                                <div class="container-fluid">
+                               <div class="container-fluid">
                                     <div class="left-side">
                                     <img src={`http://localhost:90/uploads/${room.image}`} />
                                         
@@ -59,12 +60,8 @@ render(){
                                             <p class="price">{room.price}</p>
                                             <div class="btnmore">
                                             <Link to={'/edit/'+room._id}><button>Edit</button></Link>
-                                            <button onClick={this.deleteRoom.bind(this, room._id)}>Delete</button>
-                                            
+                                            <button onClick={this.deleteRoom.bind(this, room._id)}>Delete</button>                                          
                                         </div>
-                                      
-
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -72,10 +69,8 @@ render(){
                             </div>
                             </div>
                             ) 
-                    })
-              
-    )
-    
+                    })              
+    )   
 }
 }
 export default Mypost;

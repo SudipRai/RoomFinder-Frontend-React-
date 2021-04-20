@@ -19,7 +19,7 @@ class viewroom extends Component{
       }
 }
 componentDidMount(){
- 
+ //show all the post
     axios.get("http://localhost:90/room")
     .then((response)=>{
         
@@ -31,6 +31,8 @@ componentDidMount(){
         console.log(err.response)
     })
 }
+
+//add product to watchlist
 addWatchlist = (wid) =>{
   if (localStorage.getItem('token')==null) {
     window.location.href = '/login'
@@ -73,9 +75,7 @@ addWatchlist = (wid) =>{
 render(){
     return(
         <Row>
-          
         <Carousel>
-        
         <Carousel.Item>
         
             <div className="slide">
@@ -126,6 +126,7 @@ render(){
      
       
       </form>
+      
       </div>
       <div className="searching">
       <Link to={'/filter/'+this.state.flat}><button class="filter">Flat</button></Link>
@@ -137,9 +138,6 @@ render(){
         this.state.rooms.map((room)=>{
                        
                         return (
-                          
-                                
-                            
 
                                 <div class="container-fluid">
                                     <div class="left-side">

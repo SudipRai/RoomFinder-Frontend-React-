@@ -18,24 +18,20 @@ class Login extends Component{
            
         )
     }
-  
+  //Login
     login=(e)=>{
-        
         e.preventDefault();
         axios.post("http://localhost:90/login", this.state)
         .then((response)=>{
             console.log(response);
-            
+            //setting token and userid into localstorage
             localStorage.setItem('token',response.data.token)
             localStorage.setItem('userID',response.data.user)
             
             window.location.href = '/home'
             this.setState({
                 chkLogin:true
-            })
-            
-           
-        
+            })  
         })        
         .catch((err)=>{
             alert("Invalid Credential")
@@ -44,6 +40,7 @@ class Login extends Component{
     }
     render(){
         return(
+//Login page design
            <div>
                <div class="container">
                             <div class="form-container">
@@ -80,11 +77,6 @@ class Login extends Component{
                             </div>
                         </div>
                     </div>
-                    
-                {/* <h1>Login</h1>
-                <p><input type="email" value={this.state.email} onChange={(event)=>{this.setState({email:event.target.value})}}/></p>
-                <p><input type="text" value={this.state.password} onChange={(event)=>{this.setState({password:event.target.value})}} /></p>
-                <p><button onClick={this.login}>Register</button></p> */}
             </div>
         )
     }

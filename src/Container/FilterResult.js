@@ -13,7 +13,10 @@ class FilterResult extends Component{
             headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
         }
 }
+
+
 componentDidMount(){
+    //to get the result of filter
     axios.get("http://localhost:90/filter/room/"+this.state.property)
     .then((response)=>{
         console.log(response)
@@ -22,65 +25,49 @@ componentDidMount(){
             window.location.href = '/home'
         }
         this.setState({
-            rooms : response.data.data
-            
+            rooms : response.data.data    
         })
     })
     .catch((err)=>{
         console.log(err.response)
-    })
-   
+    })  
 }
 
+// to add the items to watchlist
 addWatchlist = (wid) =>{
-
+//getting the room
     axios.get("http://localhost:90/getroom/"+ wid,this.state.config)
     .then((response)=>{
         console.log(response)
-         
         const data={
           room:response.data.data,
           userid:this.state.userID
         }
-    
-   
+// adding room to watchlist
     axios.post('http://localhost:90/watchlist', data, this.state.config)
     .then((response)=>{
       console.log(data)
-        console.log(response)
-        
+        console.log(response)  
     })
     .catch((err)=>{
         console.log(err.response)
     })
-  
     })
     .catch((err)=>{
         console.log(err.response)
     })
-
 }
 
-render(){
- 
-    
+render(){ 
     return(
         this.state.rooms.map((room)=>{
-      
-       
-                       
                         return (
-                       
-                        
-                        <div>
-                          
-                                
+                            //design to show the filter result
+                        <div>  
                             <div class="out-body">
-
                                 <div class="container-fluid">
                                     <div class="left-side">
-                                    <img src={`http://localhost:90/uploads/${room.image}`} />
-                                        
+                                    <img src={`http://localhost:90/uploads/${room.image}`} />     
                                     </div>
                                     <div class="right-side">
                                         <div class="details">
@@ -89,28 +76,16 @@ render(){
                                             <p class="price">{room.price}</p>
                                             <div class="btnmore">
                                             <Link to={'/detail/'+room._id}><button>View Details</button></Link>
-      
-                                            <button onClick={this.addWatchlist.bind(this, room._id)}>Add to Watchlist</button>
-                                            
-                                            
-                                        </div>
-                                      
-
-                                            
+                                            <button onClick={this.addWatchlist.bind(this, room._id)}>Add to Watchlist</button>  
+                                        </div>     
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             </div>
-                            ) 
-                        
-                        
-                    })
-              
-                
-    )
-                
+                            )    
+                    })           
+    )             
 }
 }
 export default FilterResult;
