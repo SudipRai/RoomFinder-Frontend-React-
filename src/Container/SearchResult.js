@@ -2,6 +2,7 @@ import { Component} from "react";
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { useAlert } from 'react-alert'
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 class SearchResult extends Component{
     state = {
@@ -64,34 +65,46 @@ addWatchlist = (wid) =>{
 
 render(){
     return(
+        <div class="row row7"> 
+        {
         this.state.rooms.map((room)=>{              
                         return (
                        
-                         <div>     
-                            <div class="out-body">
-
-                                <div class="container-fluid">
+                             
+                           
+                          <div class="col-md-6 room-item">
+                            <hr class="hr-3"></hr>
                                     <div class="left-side">
                                     <img src={`http://localhost:90/uploads/${room.image}`} />
                                         
                                     </div>
                                     <div class="right-side">
                                         <div class="details">
-                                            <h1 class="title">{room.title}</h1>
-                                            <p class="location"><i class="fas fa-map-marker-alt"></i> {room.city}</p>
-                                            <p class="price">{room.price}</p>
+                                            <p class="title">{room.title}</p>
+                                            <p class="desc">{room.descrption}</p>
+                                            <p class="location"><LocationOnIcon/>{room.city}</p>
+                                            <p class="price">{room.price}/ per month</p>
                                             <div class="btnmore">
-                                            <Link to={'/detail/'+room._id}><button>View Details</button></Link>      
-                                            <button onClick={this.addWatchlist.bind(this, room._id)}>Add to Watchlist</button>                                            
-                                       </div>
-                                      </div>
+                                            <Link to={'/detail/'+room._id}><button>View Details</button></Link>
+      
+                                            <button onClick={this.addWatchlist.bind(this, room._id)}>Watchlist</button>
+                                            
+      
+                                        </div>
+                                      
+
+                                            
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            </div>
                             )                       
-                    })                     
-    )                
+                    })   
+                }
+                </div>
+                
+                                      
+    )   
+                 
 }
 }
 export default SearchResult;

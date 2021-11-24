@@ -2,17 +2,169 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+  font-family: 'Roboto';
 }
 .container{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-    width: 100%;
+  width: 100%;
 	background: #fff
 
 
 }
+
+.body{
+  height: 100vh;
+  background-color:white;
+ 
+}
+.rowlogin{
+margin: 70px 100px 70px 100px !important;
+}
+.side-logo{
+  height: 80vh;
+  align-items: center;
+  background-color: #F0F8FF;
+  box-sizing: content-box;
+  /* margin: 70px 0 70px 250px; */
+  width: 30% ;
+  
+  padding: 0px !important;
+
+}
+.side-logo img{
+  margin: 240px 0;
+ width: 100px;
+ height: 90px;
+}
+
+
+.side-logo1{
+  height: 80vh;
+  align-items: center;
+  background-color:#2f4f4f;
+  box-sizing: content-box;
+  /* margin: 70px 200px 70px 0; */
+  padding: 0px !important;
+  width: 30%;
+ 
+}
+
+.form-control:focus {
+  outline:none !important;
+  box-shadow: none !important;
+}
+.hr-2{
+  width: 72%;
+  color: white;
+  margin: 0 auto;
+  border: 1px solid white;
+  border-radius: 12px;
+}
+.hr-3{
+  width: 78%;
+  color: #608373;
+  margin: 0 auto;
+  
+  border-radius: 12px;
+}
+.hr-4{
+  width: 100%;
+  color: #608373;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 1px solid #608373;
+}
+
+
+.loginform{
+  margin-top: 180px;
+}
+.btnlogin{
+padding: 5px;
+margin: 35px;
+margin-top: 90px;
+width: 65%;
+background-color: #f7941d;
+color: black;
+outline: none;
+border: none;
+height: 42px;
+}
+.forgot-pass{
+  color: white;
+  font-weight: 500 !important;
+  font-size: small;
+  cursor: pointer;
+}
+.check{
+  display: flex;
+  color: white;
+  padding: 5px;
+
+}
+.check input{
+  margin-left: 15%;
+}
+.check p{
+  margin-top: 6px;
+  margin-left: 5px;
+  font-size: small;
+}
+.check input{
+  margin-top: 10px;
+}
+.small-logo{
+display: none;
+}
+@media (max-width:800px) {
+.side-logo{
+    display: none;
+    margin: 0;
+    
+}
+.row{
+    margin:0px !important;
+}
+.side-logo1{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+}
+.loginform{
+    margin-top: 100px;
+    
+}
+.btnlogin{
+    margin-top: 50px;
+}
+.check{
+  margin: 10px 60px;
+}
+.small-logo{
+  display: flex;
+  width: 100px;
+  height: 100px;
+  margin: 40px auto 0 auto ;
+}
+.check input{
+  margin-left: 10%;
+}
+
+}
+@media (max-width: 600px) {
+  .check input{
+      margin-left: 5%;
+  }
+}
+
+
+
+
 
 .container .form-container{
 	position: relative;
@@ -22,6 +174,7 @@
 	height: 80%;
 	background: #fff;
 }
+
 
 .container .form-image{
 	position: absolute;
@@ -55,6 +208,9 @@ img{
 }
 .form-group{
 	margin: 30px 60px;
+}
+.log{
+  margin: 0;
 }
 
 .form-group .input-group{
@@ -146,26 +302,33 @@ text-align: right;
 }
 
 .container-fluid{
-    display:flex;
     margin-top: 40px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
     padding: 10px;
     border-radius: 8px;
     background: white;
    width: 80% !important;
+   height: auto;
    
+  }
+  .room-item{
+    /* border: 1px solid black; */
+    
+  
+    
   }
   .left-side{
     float: left;
-    width: 60%;
-    height: 50vh;
+    width: 35%;
+    height: 30vh;
+    margin: 50px 0 50px 80px;
     
   
   }
   .right-side{
-    float: right;
+    float: left;
     width: 40%;
-    height: 50vh;
+    height: 30vh;
+    margin: 50px 0 50px 30px;
     position: relative;
     border-radius: 0 15px 15px 0;
   }
@@ -182,25 +345,41 @@ text-align: right;
   }
   
  
-  .details{
-  
-    /* Center vertically and horizontally */
+  /* .details{
+    
     position: absolute;
     top: 30%;
     left: 30%;
     margin: -25px 0 0 -25px;
-  }
+  } */
   .title{
-    font-family: Impact;
+    margin-top: 10px;
+   font-size: 30px;
+   font-weight: bolder;
+   color: #284E3D;
+   text-align: left;
+   
   }
+  .desc{
+    font-size: 15px;
+    font-weight: bold;
+    color: #34604C;
+    text-align: left;
+    
+   }
   .location{
-    font-size: 20px;
-    font-family: Georgia;
-    color: green;
+    font-size: 15px;
+    text-align: left;
+    color: #74030D;
+    font-weight: bold;
   }
   .price{
-    font-size: 26px;
-    font-family: Georgia;
+    font-size: 15px;
+    text-align: left;
+    font-weight: bolder;
+  }
+  .btnmore{
+    display: flex;
   }
   .btnmore button{
       background: #203647;
@@ -209,7 +388,7 @@ text-align: right;
     border: none;
     color: #fff;
     border-radius: 5px;
-    margin: 7px;;
+    margin: 7px 7px 7px 0;
   }
   label{
 	  float: left;
@@ -219,6 +398,9 @@ text-align: right;
 	  background-color:rgb(235,0,255); 
 	  padding: 5px;
 	  margin: 5px;
+  }
+  .slide{
+    width: 100%;
   }
   .slide img{
 	width: 100%;
@@ -288,34 +470,39 @@ border-radius: 10px;
 .row{
   width: 100%;;
 }
-
+.type{
+  display: flex;
+}
 
 .type label{
-  font-weight: 600;
-  font-size: 20px;
-  font-family: Impact;
-  width: 100%;
+  font-size: 16px;
   text-align: left;
+  
 }
 
 .type p{
-  font-family: Georgia;
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: bold;
   text-align: left;
 }
 h4{
   font-family: Impact;
   text-decoration: underline;
-  color:#FFDF6C;
+  color:#203647;
   text-align: left;
 }
 .tit{
-  font-family: Roboto;
+  font-size: 26px;
+  font-weight: bold;
   margin-left: 10px;
+  margin-top: 15px;
   color: #203647;
   text-align: left;
 }
 .property-det{
   margin-left: 20px;
+  
 }
 .description{
   margin-left: 20px;
@@ -323,13 +510,18 @@ h4{
 .detail-img img{
   width: 100%;
   margin-top: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
+  height: 450px;
 }
 .description p{
   text-align: left;
 }
 .owner label{
   text-align: left;
+}
+.owner{
+  margin-top: 60px;
+  margin-left: 30px;
 }
 .editbtn button{
   background-color: #E8CEBF;
@@ -339,9 +531,11 @@ h4{
 }
 .similar{
   padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
   float: left;
-  font-family: Roboto;
-  margin-left: 150px;
+  margin-left: 100px;
+  margin-top: 20px;
 }
 .search
 {
@@ -393,4 +587,123 @@ margin: 20px auto ;
     outline: none;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: grey;
+    }
+
+    .form-group .logintext{
+      background: transparent !important;
+      outline: none !important;
+      margin: auto !important;
+      border: none !important;
+      color: white !important;
+      width: 68% !important;
+      padding: 10px !important;
+    
+    }
+    .right-side p{
+      
+      line-height: 0.8;
+    } 
+    @media screen and (max-width: 900px) {
+    
+      col-md-6{
+        width: 100% !important;
+    
+      }
+      .left-side{
+        width: 56%;
+        margin: 50px 0;
+        height: 39vh;
+      }
+      .right-side{
+        width: 42%;
+        margin: 50px 0;
+      }
+      .right-side p{
+        margin-left: 20px;
+        line-height: 0.9;
+      } 
+      .btnmore{
+        display: block;
+        
+      }
+      .btnmore button{
+        float: left;
+        margin-left: 20px;
+      }
+      .title{
+        width: 100%;
+      }
+      
+      .searching .filter{
+        height: 40px !important;
+        width: 100px;
+        display: inline-block !important;
+        text-align: center;
+        box-shadow: 0;
+        background-color: #f3f3f3 !important;
+        margin-left: 10px;
+       border-radius: 20px;
+        border: 1px solid grey;
+        outline: none;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: grey;
+        }
+    
+     
+
+    }
+    .btnmore1{
+      width: 50%;
+    }
+    .btnmore1 button{
+      width: 100%;
+      margin-left: 0;
+      background: #203647;
+      padding: 10px 15px;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+     
+      
+    }
+    .btnmore2 button{
+      width: 90%;
+      margin-left: 0;
+      background: #203647;
+      padding: 10px 15px;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+     
+      
+    }
+    .share{
+      font-size: 24px;
+      font-weight: bold;
+      float: left;
+      margin-top: 20px;
+      margin-left: 30px;
+    }
+    .iconss{
+      
+      margin-top: 20px;
+      
+    }
+    .scam{
+      background-color: #FFCCCB;
+      margin-top: 20px;
+      text-align: center;
+      height: 60px;
+      position: relative
+    }
+    .scam p{
+    text-align: center;
+    vertical-align: middle;
+    color: #FB0830;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+
     }

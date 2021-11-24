@@ -5,7 +5,7 @@ class Header extends Component{
   logout = ()=>{
     localStorage.removeItem('token')
     localStorage.removeItem('userID')
-    window.location.href = '/home'
+    window.location.href = '/login'
 }
     render(){
       //navbar if not logged in
@@ -13,7 +13,7 @@ class Header extends Component{
         var menu=
         <>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-<img src="./roomicon1.png"></img>
+<img src="../roomicon1.png"></img>
   <a class="navbar-brand" href="#">Room Finder</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

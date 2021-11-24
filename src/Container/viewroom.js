@@ -3,6 +3,7 @@ import {Container, Row , Col} from 'react-bootstrap';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel'
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 class viewroom extends Component{
     state = {
@@ -30,6 +31,10 @@ componentDidMount(){
     .catch((err)=>{
         console.log(err.response)
     })
+}
+ //reloads the page after delete
+ componentDidUpdate(){
+  this.componentDidMount();
 }
 
 //add product to watchlist
@@ -133,28 +138,33 @@ render(){
       <Link to={'/filter/'+this.state.room}><button class="filter">Room</button></Link>
       <Link to={'/filter/'+this.state.house}><button class="filter">House</button></Link>
       </div>
+      
+      <div class="row row7"> 
+      
       {
          
         this.state.rooms.map((room)=>{
                        
                         return (
 
-                                <div class="container-fluid">
+                          <div class="col-md-6 room-item">
+                            <hr class="hr-3"></hr>
                                     <div class="left-side">
                                     <img src={`http://localhost:90/uploads/${room.image}`} />
                                         
                                     </div>
                                     <div class="right-side">
                                         <div class="details">
-                                            <h1 class="title">{room.title}</h1>
-                                            <p class="location"><i class="fas fa-map-marker-alt"></i> {room.city}</p>
+                                            <p class="title">{room.title}</p>
+                                            <p class="desc">{room.descrption}</p>
+                                            <p class="location"><LocationOnIcon/>{room.city}</p>
                                             <p class="price">{room.price}/ per month</p>
                                             <div class="btnmore">
                                             <Link to={'/detail/'+room._id}><button>View Details</button></Link>
       
-                                            <button onClick={this.addWatchlist.bind(this, room._id)}>Add to Watchlist</button>
+                                            <button onClick={this.addWatchlist.bind(this, room._id)}>Watchlist</button>
                                             
-                                            
+      
                                         </div>
                                       
 
@@ -168,6 +178,8 @@ render(){
                             ) 
                     })
                 }
+                </div>
+                
                 </Row>
     )
     

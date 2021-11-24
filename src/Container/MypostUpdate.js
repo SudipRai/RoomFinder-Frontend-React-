@@ -8,7 +8,7 @@ class MypostUpdate extends Component{
     state = {
         
         id:this.props.match.params.id,
-        image:"",
+        file:"",
         title:"",
         propertytype:"",
         roomnumber:"",
@@ -20,8 +20,9 @@ class MypostUpdate extends Component{
         descrption:"",
         userID:localStorage.getItem('userID'),
         config : {
-            headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
-        }
+          headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
+      }
+     
       
 }
 changeHandler = (e)=>{
@@ -32,7 +33,7 @@ changeHandler = (e)=>{
 }
 fileHandler = (e)=>{
     this.setState({
-        image : e.target.files[0]
+        file : e.target.files[0]
     })
 }
 
@@ -62,8 +63,20 @@ componentDidMount(){
 //updating the post
 updateroom = (e)=>{
     e.preventDefault();
+    const data = new FormData() 
+    data.append('title', this.state.title)
+    data.append('propertytype', this.state.propertytype)
+    data.append('roomnumber', this.state.roomnumber)
+    data.append('district', this.state.district)
+    data.append('city', this.state.city)
+    data.append('street', this.state.street)
+    data.append('facility', this.state.facility)
+    data.append('price', this.state.price)
+    data.append('descrption', this.state.descrption)
+    data.append('userID', this.state.userID)
+    data.append('file', this.state.file)
 
-    axios.put('http://localhost:90/room/update/'+this.state.id,this.state)
+    axios.put('http://localhost:90/upload/'+this.state.id,data,this.state.config)
     .then((response)=>{
         console.log(response)
         alert("Updated")
@@ -128,6 +141,10 @@ render(){
 <div class="col-md-4">
 	<img src={`http://localhost:90/uploads/${this.state.image}`}/>
 </div>
+<div class="form-group1">
+		 	 <label for="inputTitle">Choose a picture</label><br></br>
+           <input type="file" name="file" onChange={this.fileHandler}  multiple/>
+        </div>
 </div>
 </div>
 </div>
