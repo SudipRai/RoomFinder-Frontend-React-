@@ -3,6 +3,9 @@ import {Route} from 'react-router-dom'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { useAlert } from 'react-alert'
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 // to show the post uploaded by current user
 
@@ -33,8 +36,8 @@ deleteRoom = (rid) =>{
     axios.delete('http://localhost:90/room/' + rid,  this.state.config)
     .then((response)=>{
         console.log(response)
-        alert("Deleted")
-        window.location.reload();
+        toast.success("Deleted",{autoClose:1000})
+        
     })
     .catch((err)=>{
         console.log(err.response)

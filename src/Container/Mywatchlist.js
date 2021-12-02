@@ -1,6 +1,9 @@
 import { Component} from "react";
 import {Route} from 'react-router-dom'
 import axios from 'axios';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 
 class Mywatchlist extends Component{
@@ -31,7 +34,7 @@ deleteWatchlist = (rid) =>{
     axios.delete('http://localhost:90/watchlist/' + rid,  this.state.config)
     .then((response)=>{
         console.log(response)
-        alert("Deleted");
+        toast.success("Removed",{autoClose:1000})
         
     })
     .catch((err)=>{
@@ -44,7 +47,11 @@ deleteWatchlist = (rid) =>{
 }
 
 render(){
-    return(
+    return( 
+    <div class="row row7"> 
+      
+    {
+       
         //design to show watchlist
         this.state.rooms.map((room)=>{
                        
@@ -77,8 +84,11 @@ render(){
 
                             </div>
                             </div>
+        
                             ) 
                     })
+                }
+                </div>
               
     )
     

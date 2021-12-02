@@ -9,6 +9,9 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import MessageIcon from '@mui/icons-material/Message';
 import ErrorIcon from '@mui/icons-material/Error';
 import { fontSize } from "@mui/system";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 class Viewdetail extends Component{
 	

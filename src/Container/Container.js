@@ -21,18 +21,19 @@ class Container extends Component{
         return(
             
             <div>
-                <Route path="/register" component={Register}/>
-                <Route path="/login" component={Login}/>
-                <Route path="/home" component={viewroom}/>
-                <Route path="/addroom" component={Addroom}/>
-                <Route path="/profile" component={Profile}/>
-                <Route path="/detail/:id" component={Viewdetail}/>
-                <Route path="/search/:city" component={SearchResult}/>
-                <Route path="/filter/:property" component={FilterResult}/>
-                <Route path="/edit/:id" component={MypostUpdate}/>
-                <Route path="/profileedit/:id" component={ProfileUpdate}/>
-                <Route path="/mypost" component={Mypost}/>
-                <Route path="/mywatchlist" component={Mywatchlist}/>
+                <Route path="/register" exact component={Register} />
+                <Route path="/login" exact component={Login}/>
+                <Route path="/" exact component={viewroom}/>
+                <Route path="/home" exact component={viewroom}/>
+                <Route path="/addroom" exact component={Addroom}/>
+                <Route path="/profile" exact component={Profile}/>
+                <Route path="/detail/:id" exact component={Viewdetail}/>
+                <Route path="/search/:city" exact component={SearchResult}/>
+                <Route path="/filter/:property" exact component={FilterResult}/>
+                <Route path="/edit/:id" exact component={MypostUpdate}/>
+                <Route path="/profileedit/:id" exact component={ProfileUpdate}/>
+                <Route path="/mypost" exact component={Mypost}/>
+                <Route path="/mywatchlist" exact component={Mywatchlist}/>
                 
                 
             

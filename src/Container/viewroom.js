@@ -4,6 +4,14 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import SearchIcon from '@mui/icons-material/Search';
+import IconButton from "@material-ui/core/IconButton";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import { TextField } from "@material-ui/core";
+import ReactPaginate from 'react-paginate';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 class viewroom extends Component{
     state = {
@@ -13,19 +21,28 @@ class viewroom extends Component{
         flat:"Flat",
         room:"Room",
         house:"House",
+        searchTerm:"",
+        perPage: 4,
+        page: 0,
+        pages: 0,
+      
         userID:localStorage.getItem('userID'),
 
         config : {
           headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
       }
 }
+editSearchTerm=(e)=>{
+  this.setState({searchTerm:e.target.value})
+  }
 componentDidMount(){
  //show all the post
     axios.get("http://localhost:90/room")
     .then((response)=>{
-        
+      const roomlist=response.data.data
         this.setState({
-            rooms : response.data.data
+            rooms : response.data.data,
+            pages: Math.floor(roomlist.length / this.state.perPage)
         })
     })
     .catch((err)=>{
@@ -35,6 +52,10 @@ componentDidMount(){
  //reloads the page after delete
  componentDidUpdate(){
   this.componentDidMount();
+}
+handlePageClick = (event) => {
+  let page = event.selected;
+  this.setState({page})
 }
 
 //add product to watchlist
@@ -58,8 +79,8 @@ addWatchlist = (wid) =>{
       .then((response)=>{
         console.log(data)
           console.log(response)
-          window.location.href = '/mywatchlist'
-          alert("Added to watchlist")
+          
+          toast.success("Added to watchlist",{autoClose:1000})
           
       })
       .catch((err)=>{
@@ -71,6 +92,84 @@ addWatchlist = (wid) =>{
           console.log(err.response)
       })
  
+}
+}
+
+
+renderRoom(){
+
+  const {page, perPage, rooms} = this.state;
+  let items = rooms.slice(page * perPage, (page + 1) * perPage);
+  if(this.state.searchTerm===""){
+  return items.map((room) => {
+    console.log(room)
+     return (
+      <div class="col-md-6 room-item">
+      <hr class="hr-3"></hr>
+              <div class="left-side">
+              <img src={`http://localhost:90/uploads/${room.image}`} />
+                  
+              </div>
+              <div class="right-side">
+                  <div class="details">
+                      <p class="title">{room.title}</p>
+                      <p class="desc">{room.descrption}</p>
+                      <p class="location"><LocationOnIcon/>{room.city}</p>
+                      <p class="price">{room.price}/ per month</p>
+                      <div class="btnmore">
+                      <Link to={'/detail/'+room._id}><button>View Details</button></Link>
+
+                      <button onClick={this.addWatchlist.bind(this, room._id)}>Watchlist</button>
+                      
+
+                  </div>
+                
+
+                      
+                  </div>
+              </div>
+          </div>
+          
+       
+     )
+     
+  })
+}
+
+  else{
+    return rooms.map((room) => {
+        console.log(room)
+        if(this.state.searchTerm!=="" && room.title.toLowerCase().indexOf(this.state.searchTerm.toLowerCase())===-1){
+          return null
+      }
+         return (
+          <div class="col-md-6 room-item">
+      <hr class="hr-3"></hr>
+              <div class="left-side">
+              <img src={`http://localhost:90/uploads/${room.image}`} />
+                  
+              </div>
+              <div class="right-side">
+                  <div class="details">
+                      <p class="title">{room.title}</p>
+                      <p class="desc">{room.descrption}</p>
+                      <p class="location"><LocationOnIcon/>{room.city}</p>
+                      <p class="price">{room.price}/ per month</p>
+                      <div class="btnmore">
+                      <Link to={'/detail/'+room._id}><button>View Details</button></Link>
+
+                      <button onClick={this.addWatchlist.bind(this, room._id)}>Watchlist</button>
+                      
+
+                  </div>
+                
+
+                      
+                  </div>
+              </div>
+          </div>
+         )
+      })
 }
 }
 
@@ -124,13 +223,21 @@ render(){
         </Carousel.Item>
       </Carousel>
       <div className="searching">
-        <form>
-      <input class="form-control search" type="text" placeholder="Search by Location" aria-label="Search" value={this.state.search} onChange={(event)=>{this.setState({search:event.target.value})}}></input>
-      <Link to={'/search/'+this.state.search}><button class="go">Go</button></Link>
+        
+        <TextField InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="start">
+                              <IconButton>
+                              <SearchIcon />
+                              </IconButton>
+                            </InputAdornment>
+                          )
+                          }} className="searchbar" type= 'text' value={this.state.searchTerm}  onChange = {this.editSearchTerm} placeholder = 'Search'/>
+      
       
      
       
-      </form>
+ 
       
       </div>
       <div className="searching">
@@ -142,45 +249,15 @@ render(){
       <div class="row row7"> 
       
       {
-         
-        this.state.rooms.map((room)=>{
-                       
-                        return (
-
-                          <div class="col-md-6 room-item">
-                            <hr class="hr-3"></hr>
-                                    <div class="left-side">
-                                    <img src={`http://localhost:90/uploads/${room.image}`} />
-                                        
-                                    </div>
-                                    <div class="right-side">
-                                        <div class="details">
-                                            <p class="title">{room.title}</p>
-                                            <p class="desc">{room.descrption}</p>
-                                            <p class="location"><LocationOnIcon/>{room.city}</p>
-                                            <p class="price">{room.price}/ per month</p>
-                                            <div class="btnmore">
-                                            <Link to={'/detail/'+room._id}><button>View Details</button></Link>
-      
-                                            <button onClick={this.addWatchlist.bind(this, room._id)}>Watchlist</button>
-                                            
-      
-                                        </div>
-                                      
-
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-
-                            
-                            
-                            ) 
-                    })
+        
+        this.renderRoom()
                 }
-                </div>
-                
+            
+                </div> 
+              
+               
                 </Row>
+                
     )
     
 }

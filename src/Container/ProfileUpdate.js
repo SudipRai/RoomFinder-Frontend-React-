@@ -2,6 +2,10 @@ import { Component} from "react";
 import {Route} from 'react-router-dom'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import validator from 'validator'
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 
 class ProfileUpdate extends Component{
@@ -14,7 +18,10 @@ class ProfileUpdate extends Component{
         password:"",
         config : {
             headers : {'authorization': `Bearer ${localStorage.getItem('token')}`}
-        }
+        },
+        fullnameError:"",
+        emailError:"",
+        numberError:"", 
       
 }
 changeHandler = (e)=>{
@@ -42,16 +49,49 @@ componentDidMount(){
 //updates profile
 updateProfile = (e)=>{
     e.preventDefault();
+    if(this.validate()){
     axios.put('http://localhost:90/profile/update/'+this.state.id,this.state)
     .then((response)=>{
-        console.log(response)
-        window.location.href = '/profile'     
+        console.log(response) 
+        toast.success("Profile updated",{delay:1000, autoClose:1000})
+        this.props.history.push("/profile")
+          
     })
     .catch((err)=>{
         console.log(err.response)
     })
 }
+}
+validate=()=>{
+    let fullnameError=""
+    let emailError=""
+    let numberError=""
+    if(!this.state.fullname){
+      fullnameError="Field is empty"
+    }
+    if(!this.state.email){
+        emailError="Field is empty"
+      }
 
+      if(!this.state.phone){
+        numberError="Field is empty"
+      }
+
+    if(this.state.email){
+    if (validator.isEmail(this.state.email)) {
+        emailError=""
+      } else {
+        emailError="Enter valid Email!"
+      }
+    }
+
+    if(fullnameError || emailError || numberError){
+      this.setState({fullnameError,emailError,numberError})
+      return false;
+    }
+    return true;
+
+  }
     render(){
         return(
                  
@@ -72,11 +112,13 @@ updateProfile = (e)=>{
                       <label class="prolabel">Fullname</label>
                       
                       <input type="text" name="fullname" class="form-control" value={this.state.fullname} onChange={this.changeHandler} id="inputTitle" placeholder="Fullname"/>
-              
+                      <div style={{fontSize:12, color:"red"}}>{this.state.fullnameError}</div>
                       <label class="prolabel">Email</label>
                       <input type="text" name="email" class="form-control" value={this.state.email} onChange={this.changeHandler} id="inputTitle" placeholder="Email"/>
+                      <div style={{fontSize:12, color:"red"}}>{this.state.emailError}</div>
                       <label class="prolabel">Phone</label>
                       <input type="text" name="phone" class="form-control" value={this.state.phone} onChange={this.changeHandler} id="inputTitle" placeholder="Phone"/>
+                      <div style={{fontSize:12, color:"red"}}>{this.state.numberError}</div>
                       </div>
                       <hr class="hr1"></hr>
                       <div class="buttons">

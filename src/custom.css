@@ -310,12 +310,7 @@ text-align: right;
    height: auto;
    
   }
-  .room-item{
-    /* border: 1px solid black; */
-    
   
-    
-  }
   .left-side{
     float: left;
     width: 35%;
@@ -337,7 +332,29 @@ text-align: right;
     height: 100%;
     border-radius: 15px 0 0 15px;
   }
+  .left-side1{
+    float: left;
+    width: 40%;
+    height: 30vh;
+    margin: 50px 0 50px 20px;
+    
   
+  }
+  .right-side1{
+    float: left;
+    width: 30%;
+    height: 30vh;
+    margin: 50px 0 50px 30px;
+    position: relative;
+    border-radius: 0 15px 15px 0;
+    line-height: 1;
+  }
+  .left-side1 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px 0 0 15px;
+  }
   .col-md-4 img{
     width: 100%;
     height: 100%;
@@ -381,6 +398,10 @@ text-align: right;
   .btnmore{
     display: flex;
   }
+  .btnmore3{
+    display: flex;
+    float: left1;
+  }
   .btnmore button{
       background: #203647;
     width: 150px;
@@ -390,6 +411,15 @@ text-align: right;
     border-radius: 5px;
     margin: 7px 7px 7px 0;
   }
+  .btnmore3 button{
+  background: #203647;
+  width: 80px;
+  padding: 8px 13px;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  margin: 7px 7px 7px 0;
+}
   label{
 	  float: left;
 	  padding: 5px;
@@ -407,12 +437,13 @@ text-align: right;
 	height: 90vh;
 	border-radius: 0;
   }
+  
 
   
 .myinfo{
-  margin-left: 30px;
+  
   margin-top: 50px;
-  display: block;
+  
   text-align: left;
 }
 h3{
@@ -422,7 +453,7 @@ h3{
 }
 .prolabel{
   font-weight: bold;
-  width: 100%;
+  
 }
 .buttons {
   text-align: center;
@@ -445,19 +476,27 @@ background-color: #203647;
 border: 1px solid white;
 border-radius: 10px;
   height: 70vh;
+  margin: 20px;
+
+  
 }
 .pro{
   width: 100%;
-  height: 70vh;
-  background-color: #E8CEBF;
   border-radius: 25px;
   margin-top: 35px;
 }
 .proimg img{
-  width: 100%;
+  width: 200px;
+  height: 200px;
   margin-top: 20px;
 }
 .proname{
+  text-align: centre;
+  
+
+}
+.proname1{
+  display: block;
   text-align: center;
 
 }
@@ -465,8 +504,18 @@ border-radius: 10px;
   font-weight: bolder;
   font-size: 24px;
   color: white;
-  margin: 5px;
+  margin-top: 10px;
+  
 }
+.proname1 p{
+  line-height: 1;
+  font-weight: normal;
+  font-size: 18px;
+  color: white;
+  
+  text-align: center;
+}
+
 .row{
   width: 100%;;
 }
@@ -528,6 +577,16 @@ h4{
   color: #203647;
   border: none;
   border-radius: 10px;
+  float: left;
+  margin-left: 40px;
+}
+.editbtn1 button{
+  background-color: #E8CEBF;
+  color: #203647;
+  border: none;
+  border-radius: 10px;
+  margin-top: 20px;
+  justify-content: center;
 }
 .similar{
   padding: 20px;
@@ -554,7 +613,7 @@ outline: none !important;
 .searching{
   width: 90% !important;
 height: 60px !important;
-margin: 20px auto ;
+margin-top: 80px;
 }
 
 .jumbotron{
@@ -605,10 +664,11 @@ margin: 20px auto ;
     } 
     @media screen and (max-width: 900px) {
     
-      col-md-6{
-        width: 100% !important;
     
+      .room-item{
+        display: block;
       }
+      
       .left-side{
         width: 56%;
         margin: 50px 0;
@@ -627,6 +687,28 @@ margin: 20px auto ;
         
       }
       .btnmore button{
+        float: left;
+        margin-left: 20px;
+      }
+
+      .left-side1{
+        width: 100%;
+        
+        height: 39vh;
+      }
+      .right-side1{
+        width: 100%;
+        
+      }
+      .right-side1 p{
+        margin-left: 20px;
+        line-height: 0.9;
+      } 
+      .btnmore3{
+        display: block;
+        
+      }
+      .btnmore3 button{
         float: left;
         margin-left: 20px;
       }
@@ -689,6 +771,7 @@ margin: 20px auto ;
       margin-top: 20px;
       
     }
+   
     .scam{
       background-color: #FFCCCB;
       margin-top: 20px;
@@ -707,3 +790,54 @@ margin: 20px auto ;
     transform: translate(-50%, -50%)
 
     }
+    .row8{
+      height: 100%;
+    }
+    .searchbar{
+      margin-top: 20px!important;
+      height: 40px;
+      width: 400px;
+      padding: 6px;
+      border: none;
+      outline: none;
+      border-radius: 25px;
+     
+  }
+ 
+.pagination {
+  display: flex;
+  list-style: none;
+  margin-top: 100px;
+  padding: 0;
+  align-items: center;
+ }
+ 
+ .pagination a {
+  cursor: default;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #6c7ac9;
+  color: #6c7ac9;
+  margin-left: 5px;
+ }
+ 
+ .pagination li:not(.disabled) a:hover {
+  background-color: bisque;
+  cursor: pointer;
+ }
+ 
+ .pagination li a {
+  font-weight: bold;
+ }
+ 
+ .pagination li.active a {
+  color: #fff;
+  background: #6c7ac9;
+ }
+ 
+ .pagination li.disabled a {
+  pointer-events: none;
+  color: rgb(198, 197, 202);
+  border: 1px solid rgb(198, 197, 202);
+ }
+

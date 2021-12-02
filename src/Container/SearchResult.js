@@ -3,6 +3,9 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { useAlert } from 'react-alert'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 class SearchResult extends Component{
     state = {
